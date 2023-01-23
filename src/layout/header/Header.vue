@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <Collapse></Collapse>
-  </div>
+  <Collapse></Collapse>
+  <BredCum />
 </template>
 <script setup lang="ts">
 import { ref, reactive, computed } from 'vue';
 import Collapse from './Collapse.vue';
-import { useSystemStore } from '@/store/index';
-const isCollapse = computed(()=>{
+import { useSystemStore } from '@/store';
+import BredCum from './BredCum.vue';
+/* const isCollapse = computed(() => {
   const store = useSystemStore();
-  return store.collapse
-})
+  return store.collapse;
+}); */
 </script>
 <style lang="scss" scoped></style>

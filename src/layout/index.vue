@@ -8,6 +8,7 @@
         <HeaderVue></HeaderVue>
       </el-header>
       <el-main class="main">
+        <Tabs />
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -16,6 +17,7 @@
 <script setup lang="ts">
 import MenuBarVue from './menu/MenuBar.vue';
 import HeaderVue from './header/Header.vue';
+import Tabs from './tabs/Tabs.vue';
 </script>
 <style lang="scss" scoped>
 .layout {
@@ -26,6 +28,8 @@ import HeaderVue from './header/Header.vue';
   .header {
     height: 50px;
     border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
   }
   .main {
     // background-color: darkcyan;

@@ -5,12 +5,11 @@
 </template>
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { useSystemStore } from '@/store/index';
+import { useSystemStore } from '@/store';
+const store = useSystemStore();
 const status = computed(() => {
-  const store = useSystemStore();
   return store.collapse;
 });
-const store = useSystemStore();
 const changeIcon = () => {
   store.setCollopse(!status.value);
 };
@@ -22,5 +21,6 @@ const changeIcon = () => {
   font-size: 22px;
   color: #303133;
   cursor: pointer;
+  margin-right: 15px;
 }
 </style>
