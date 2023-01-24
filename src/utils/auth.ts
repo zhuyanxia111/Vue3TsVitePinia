@@ -27,3 +27,6 @@ export const getExpireTime = () => {
 export const removeToken = () => {
   return sessionStorage.setItem(Keys.Token, '')
 }
+export const cleanSession = () => {
+  sessionStorage.clear()
+}

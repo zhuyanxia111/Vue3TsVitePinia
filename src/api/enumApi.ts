@@ -17,5 +17,7 @@ export enum Api {
   getMenuParent = "/api/menu/parent",
   addMenu = "/api/menu",
   getRoleId = '/api/user/getRoleIdByUserId',
-  assingRole = "/api/user/assingRole"
+  assingRole = "/api/user/assingRole",
+  loginOut = '/api/sysUser/loginOut',
+  restore = '/api/backup/restore'
 } 

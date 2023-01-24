@@ -37,3 +37,11 @@ export const getRoleListApi = async (parm: AssignRoleListParm) => {
 export const assingRoleSaveApi = async (parm: SelectRoleParm) => {
   return await http.post(Api.assingRole, parm)
 }
+//退出登录
+export async function loginOutApi(parm: object) {
+  return await http.post(Api.loginOut, parm)
+}
+//数据库还原
+export async function restoreApi() {
+  return await http.post(Api.restore, null)
+}

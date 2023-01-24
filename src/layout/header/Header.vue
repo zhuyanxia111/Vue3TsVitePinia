@@ -1,15 +1,15 @@
 <template>
-  <Collapse></Collapse>
-  <BredCum />
+  <div  style="display: flex; justify-content: space-between;width: 100%;">
+    <div style="display: flex; align-items: center">
+      <Collapse></Collapse>
+      <BredCum></BredCum>
+    </div>
+    <UserInfo></UserInfo>
+  </div>
 </template>
 <script setup lang="ts">
-import { ref, reactive, computed } from 'vue';
 import Collapse from './Collapse.vue';
-import { useSystemStore } from '@/store';
 import BredCum from './BredCum.vue';
-/* const isCollapse = computed(() => {
-  const store = useSystemStore();
-  return store.collapse;
-}); */
+import UserInfo from './UserInfo.vue';
 </script>
 <style lang="scss" scoped></style>
