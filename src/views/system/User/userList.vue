@@ -11,7 +11,13 @@
         <el-form-item>
           <el-button icon="Search" @click="searchBtn">搜索</el-button>
           <el-button icon="Close" @click="resetBtn">重置</el-button>
-          <el-button type="primary" icon="Plus" @click="addBtn">新增</el-button>
+          <el-button
+            type="primary"
+            icon="Plus"
+            @click="addBtn"
+            v-permission="['sys:user:add']"
+            >新增</el-button
+          >
         </el-form-item>
       </el-form>
       <!-- 用户表格 -->
@@ -22,19 +28,25 @@
         <el-table-column prop="email" label="邮箱"></el-table-column>
         <el-table-column align="center" width="320" label="操作">
           <template #default="scope">
-            <el-button type="primary" icon="Edit" @click="editBtn(scope.row)"
+            <el-button
+              type="primary"
+              icon="Edit"
+              @click="editBtn(scope.row)"
+              v-permission="['sys:user:edit']"
               >编辑</el-button
             >
             <el-button
               type="primary"
               icon="Setting"
               @click="assignBtn(scope.row)"
+              v-permission="['sys:user:assign']"
               >分配角色</el-button
             >
             <el-button
               type="danger"
               icon="Delete"
               @click="deleteBtn(scope.row.id)"
+              v-permission="['sys:user:delete']"
               >删除</el-button
             >
           </template>

@@ -3,7 +3,13 @@
     <!-- 新增按钮 -->
     <el-form :inline="true">
       <el-form-item>
-        <el-button type="primary" @click="addBtn" icon="Plus">新增</el-button>
+        <el-button
+          type="primary"
+          @click="addBtn"
+          icon="Plus"
+          v-permission="['sys:menu:add']"
+          >新增</el-button
+        >
       </el-form-item>
     </el-form>
     <!-- 表格 -->
@@ -37,10 +43,18 @@
       <el-table-column prop="url" label="组件路径" />
       <el-table-column label="操作" width="210" align="center">
         <template #default="scope">
-          <el-button type="primary" @click="editBtn(scope.row)" icon="Edit"
+          <el-button
+            type="primary"
+            @click="editBtn(scope.row)"
+            icon="Edit"
+            v-permission="['sys:menu:edit']"
             >编辑</el-button
           >
-          <el-button type="danger" @click="deleteBtn(scope.row.id)" icon="Close"
+          <el-button
+            type="danger"
+            @click="deleteBtn(scope.row.id)"
+            icon="Close"
+            v-permission="['sys:menu:delete']"
             >删除</el-button
           >
         </template>

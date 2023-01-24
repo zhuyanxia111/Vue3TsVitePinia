@@ -15,7 +15,13 @@
       </el-form-item>
       <el-form-item>
         <el-button icon="Search" @click="searchBtn()">查询</el-button>
-        <el-button type="primary" @click="addBtn()" icon="Plus">新增</el-button>
+        <el-button
+          type="primary"
+          @click="addBtn()"
+          icon="Plus"
+          v-permission="['sys:addDepartment']"
+          >新增</el-button
+        >
       </el-form-item>
     </el-form>
     <!-- 表格 -->
@@ -33,10 +39,18 @@
       <el-table-column prop="deptPhone" label="部门电话" />
       <el-table-column width="200" align="center" label="操作">
         <template #default="scope">
-          <el-button type="success" @click="editBtn(scope.row)" icon="Edit"
+          <el-button
+            type="success"
+            @click="editBtn(scope.row)"
+            icon="Edit"
+            v-permission="['sys:editDept']"
             >编辑</el-button
           >
-          <el-button type="danger" @click="deleteBtn(scope.row)" icon="Close"
+          <el-button
+            type="danger"
+            @click="deleteBtn(scope.row)"
+            icon="Close"
+            v-permission="['sys:deleteDept']"
             >删除</el-button
           >
         </template>

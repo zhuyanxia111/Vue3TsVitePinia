@@ -9,6 +9,7 @@ import resetForm from './utils/resetForm'
 import objCoppy from './utils/objCoppy'
 import myconfirm from './utils/myconfirm'
 import { ElMessage } from "element-plus";
+import { permission } from '@/directives/permission'//按钮权限
 const pinia = createPinia()
 const app = createApp(App)
 app.config.globalProperties.$resetForm = resetForm//清空表单
@@ -19,3 +20,4 @@ app.use(globalRegister)
 app.use(router)
 app.use(pinia)
 app.mount('#app')
+app.directive('permission', permission)

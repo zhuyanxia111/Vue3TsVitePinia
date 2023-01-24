@@ -13,7 +13,13 @@
         <el-button icon="Close" style="color: #ff7670" @click="resetBtn"
           >重置</el-button
         >
-        <el-button type="primary" @click="addBtn" icon="Plus">新增</el-button>
+        <el-button
+          type="primary"
+          @click="addBtn"
+          icon="Plus"
+          v-permission="['sys:role:add']"
+          >新增</el-button
+        >
       </el-form-item>
     </el-form>
     <!-- 表格 -->
@@ -22,19 +28,25 @@
       <el-table-column prop="remark" label="角色备注"></el-table-column>
       <el-table-column label="操作" align="center" width="400">
         <template #default="scope">
-          <el-button type="primary" icon="Edit" @click="editBtn(scope.row)"
+          <el-button
+            type="primary"
+            icon="Edit"
+            @click="editBtn(scope.row)"
+            v-permission="['sys:role:edit']"
             >编辑</el-button
           >
           <el-button
             type="primary"
             icon="Setting"
             @click="assignPermission(scope.row.id, scope.row.name)"
+            v-permission="['sys:role:assign']"
             >分配权限</el-button
           >
           <el-button
             type="danger"
             icon="Delete"
             @click="deleteBtn(scope.row.id)"
+            v-permission="['sys:role:delete']"
             >删除</el-button
           >
         </template>
