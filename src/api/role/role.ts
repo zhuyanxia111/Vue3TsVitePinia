@@ -6,15 +6,15 @@ export const getRoleListApi = async (params: RoleListParm) => {
 }
 
 export const addRoleApi = async (params: AddRoleModel) => {
-  return await http.put(Api.addRole, params)
+  return await http.post(Api.addRole, params)
 }
 //编辑角色
 export const editRoleApi = async (parm: AddRoleModel) => {
-  return await http.put(Api.add, parm)
+  return await http.put(Api.addRole, parm)
 }
 //删除角色
 export const deleteRoleApi = async (parm: DeleteParm) => {
-  return await http.delete(Api.add, parm)
+  return await http.delete(Api.addRole, parm)
 }
 //分配权限树的数据
 export const assignTreeApi = async (parm: AssignTreeParm) => {

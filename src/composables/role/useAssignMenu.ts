@@ -1,5 +1,4 @@
-import { AddRoleModel, AssignSaveParm, AssignTreeParm } from "@/api/role/RoleModel";
-import { EditType, Title } from "@/type/BaseEnum";
+import { AssignSaveParm, AssignTreeParm } from "@/api/role/RoleModel";
 import { DialogModel, StrNum, TreeArr } from "@/type/BaseType";
 import { ElTree } from "element-plus";
 import { reactive, ref } from "vue";
@@ -97,6 +96,7 @@ export default function useAssignMenu(dialog: DialogModel, onShow: Function, onC
     confirm,
     show,
     defaultProps,
+    assignTree,
     assignTreeData
   }
 }

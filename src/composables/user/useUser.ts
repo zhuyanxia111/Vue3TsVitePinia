@@ -7,7 +7,8 @@ import { addUser, editUser, deletetUser } from '@/api/user/user'
 
 export default function useUser(getUserList: Function) {
   const { global } = useInstance(); //可获取到全局挂载对象
-  const userAddRef = ref<{ show: (type: string, row?: AddUserModel) => void }>();
+  const userAddRef = ref<{ show: (type: string, row?: AddUserModel) => void, onClose: () => void }>();
+  const assignRoleRef = ref<{ show: (name: string | undefined, userId: number | string | undefined) => void }>();
   //搜索
   const searchBtn = () => {
     getUserList()
@@ -34,15 +35,23 @@ export default function useUser(getUserList: Function) {
   //保存
   const save = async (params: AddUserModel) => {
     let res: Result;
+    let msg: string;
     if (params.type === EditType.ADD) {
       res = await addUser(params)
+      msg = "新增成功"
     } else {
       res = await editUser(params)
+      msg = "编辑成功"
     }
     if (res && res.code === StatusCode.Success) {
-      global.$message({ message: '新增成功', type: 'success' })
+      global.$message({ message: msg, type: 'success' })
+      userAddRef.value?.onClose()
       getUserList()
     }
+  }
+  //分配角色
+  const assignBtn = (row?: AddUserModel) => {
+    assignRoleRef.value?.show(row?.username, row?.id)
   }
   return {
     searchBtn,
@@ -50,6 +59,8 @@ export default function useUser(getUserList: Function) {
     editBtn,
     deleteBtn,
     userAddRef,
-    save
+    save,
+    assignBtn,
+    assignRoleRef
   }
 }

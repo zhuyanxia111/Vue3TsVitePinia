@@ -91,10 +91,10 @@ const { show, confirm, addUserForm, select } = useUserAddAndEdit(
   emit,
   addModel
 ); //校验和处理数据
-
 //暴露方法给父组件使用
 defineExpose({
   show,
+  onClose,
 });
 </script>
 <style scoped lang="scss"></style>

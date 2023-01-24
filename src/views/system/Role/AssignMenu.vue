@@ -28,11 +28,8 @@ import useAssignMenu from '@/composables/role/useAssignMenu';
 import useDialog from '@/hooks/useDialog';
 //弹框属性
 const { dialog, onShow, onClose } = useDialog();
-const { confirm, show, defaultProps, assignTreeData } = useAssignMenu(
-  dialog,
-  onShow,
-  onClose
-);
+const { confirm, show, defaultProps, assignTreeData, assignTree } =
+  useAssignMenu(dialog, onShow, onClose);
 defineExpose({ show });
 </script>
 <style scoped lang="scss"></style>

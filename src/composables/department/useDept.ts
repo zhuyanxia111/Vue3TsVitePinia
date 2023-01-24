@@ -34,13 +34,16 @@ export default function useDept(getDepList: Function) {
   //保存
   const save = async (params: AddDeptModel) => {
     let res: Result;
+    let msg: string;
     if (params.type === EditType.ADD) {
       res = await addDeptParentApi(params)
+      msg = "新增成功"
     } else {
       res = await editDeptParentApi(params)
+      msg = "编辑成功"
     }
     if (res && res.code === StatusCode.Success) {
-      global.$message({ message: '新增成功', type: 'success' })
+      global.$message({ message: msg, type: 'success' })
       getDepList()
     }
   }

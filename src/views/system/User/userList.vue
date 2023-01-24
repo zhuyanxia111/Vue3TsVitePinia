@@ -20,10 +20,16 @@
         <el-table-column prop="deptName" label="所属部门"></el-table-column>
         <el-table-column prop="mobile" label="电话"></el-table-column>
         <el-table-column prop="email" label="邮箱"></el-table-column>
-        <el-table-column align="center" width="290" label="操作">
+        <el-table-column align="center" width="320" label="操作">
           <template #default="scope">
             <el-button type="primary" icon="Edit" @click="editBtn(scope.row)"
               >编辑</el-button
+            >
+            <el-button
+              type="primary"
+              icon="Setting"
+              @click="assignBtn(scope.row)"
+              >分配角色</el-button
             >
             <el-button
               type="danger"
@@ -45,6 +51,7 @@
         background
       ></el-pagination>
       <AddAndEdit ref="userAddRef" @save="save" />
+      <AssignRole ref="assignRoleRef" />
     </el-main>
   </el-container>
 </template>
@@ -54,7 +61,7 @@ import { ref, onMounted } from 'vue';
 import useUserTable from '@/composables/user/useUserTable';
 import AddAndEdit from './AddAndEdit.vue';
 import useUser from '@/composables/user/useUser';
-import useInstance from '@/hooks/useInstance';
+import AssignRole from './AssignRole.vue';
 const containerHeight = ref(0);
 const tableHeight = ref(0);
 onMounted(() => {
@@ -70,6 +77,14 @@ const {
   treeClick,
   resetBtn,
 } = useUserTable();
-const { searchBtn, addBtn, editBtn, deleteBtn, userAddRef, save } =
-  useUser(getUserList);
+const {
+  searchBtn,
+  addBtn,
+  editBtn,
+  deleteBtn,
+  userAddRef,
+  save,
+  assignBtn,
+  assignRoleRef,
+} = useUser(getUserList);
 </script>

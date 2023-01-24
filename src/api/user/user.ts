@@ -1,6 +1,6 @@
 import http from "@/utils/http"
 import { Api } from "../enumApi"
-import { LoginParm, LoginResult, UserListParm, AddUserModel } from './UserModel'
+import { LoginParm, LoginResult, UserListParm, AddUserModel, AssignRoleListParm, SelectRoleParm } from './UserModel'
 export async function getImagApi(): Promise<any> {
   return await http.getImage(Api.getImg)
 }
@@ -25,4 +25,15 @@ export const editUser = async (params: AddUserModel) => {
 export const deletetUser = async (params: { [key: string]: any }) => {
   return await http.delete(Api.addEditUser, params)
 }
-
+//查询用户原来用有的角色id
+export const getRoleIdApi = async (userId: number | string) => {
+  return await http.getRestApi(Api.getRoleId, { userId: userId })
+}
+//获取分配角色弹框列表
+export const getRoleListApi = async (parm: AssignRoleListParm) => {
+  return await http.get(Api.getRoleList, parm)
+}
+//分配角色保存
+export const assingRoleSaveApi = async (parm: SelectRoleParm) => {
+  return await http.post(Api.assingRole, parm)
+}

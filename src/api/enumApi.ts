@@ -16,4 +16,6 @@ export enum Api {
   getMenuTable = "/api/menu/list",
   getMenuParent = "/api/menu/parent",
   addMenu = "/api/menu",
+  getRoleId = '/api/user/getRoleIdByUserId',
+  assingRole = "/api/user/assingRole"
 } 

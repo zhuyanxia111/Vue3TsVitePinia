@@ -1,7 +1,7 @@
 import { AddRoleModel } from "@/api/role/RoleModel";
 import { EditType, Title } from "@/type/BaseEnum";
 import { DialogModel } from "@/type/BaseType";
-import { reactive, ref } from "vue";
+import { nextTick, reactive, ref } from "vue";
 import type { FormInstance } from 'element-plus'
 import useInstance from "@/hooks/useInstance";
 import { getUserId } from "@/utils/auth";
@@ -34,12 +34,14 @@ export default function useAddRole(dialog: DialogModel, onClose: Function, onSho
   }
   //显示弹框
   const show = (type: string, row?: AddRoleModel) => {
+    type == EditType.ADD ? dialog.title = Title.ADD : Title.EDIT//设置弹框标题
     onShow(); //显示弹框
     global.$resetForm(addRoleForm.value, addModel); //清空数据
-    type == EditType.ADD ? dialog.title = Title.ADD : Title.EDIT//设置弹框标题
-    if (type === EditType.EDIT) {
-      global.$objCoppy(row, addModel);//回显编辑的内容
-    }
+    nextTick(() => {
+      if (type === EditType.EDIT) {
+        global.$objCoppy(row, addModel);//回显编辑的内容
+      }
+    })
     addModel.type = type;
   }
   return {
